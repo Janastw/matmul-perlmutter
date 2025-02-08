@@ -132,9 +132,9 @@ int main(int argc, char** argv) {
         reference_dgemm(n, -1., A, B, C);
 
         /* A := |A|, B := |B|, C := |C| */
-        std::transform(A, &A[n * n], A, fabs);
-        std::transform(B, &B[n * n], B, fabs);
-        std::transform(C, &C[n * n], C, fabs);
+        std::transform(A, &A[n * n], A, static_cast<double(*)(double)>(std::fabs));
+        std::transform(B, &B[n * n], B, static_cast<double(*)(double)>(std::fabs));
+        std::transform(C, &C[n * n], C, static_cast<double(*)(double)>(std::fabs));
 
         /* C := |C| - 3 * e_mach * n * |A| * |B|, computed with reference_dgemm */
         const auto e_mach = std::numeric_limits<double>::epsilon();

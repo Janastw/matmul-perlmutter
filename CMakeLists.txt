@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(hw1 LANGUAGES C CXX)
+include_directories("/opt/homebrew/opt/openblas/include")
 
 find_package(BLAS REQUIRED)
 
